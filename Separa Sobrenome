@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define N 100
+
+void acha_sobrenome(char str[N], char sobrenome[N])
+{
+    int i, l;
+
+    for (i=0;str[i]!='\0';i++)
+    {
+        if (str[i]==' ')
+        {
+            l = i;
+        }
+    }
+
+    l++;
+
+    for (i=0;str[i]!='\0';i++,l++)
+    {
+        sobrenome[i] = str[l];
+    }
+
+    sobrenome[i] = '\0';
+}
+
+
+int main()
+{
+    char str[N], sobrenome[N];
+
+    printf("Nome: \n");
+
+    gets(str);
+
+    acha_sobrenome(str, sobrenome);
+
+    printf("%s\n", sobrenome);
+
+
+    return 0;
+}

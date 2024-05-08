@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
+
+#define N 100
+
+int hex2dec(char str[N])
+{
+    int i, n=0, x;
+
+    int exp = strlen(str)-1;
+
+    for(i=0; str[i]!='\0';i++)
+    {
+        if (str[i] >= '0' && str[i] <= '9')
+        {
+            x = str[i] - 48;
+        }
+
+        else
+        {
+            x = toupper(str[i]) - 55;
+        }
+
+        n += x * pow (16, exp);
+
+        exp --;
+
+    }
+
+    return n;
+}
+
+int main()
+{
+    char str[N];
+
+    printf("Digite o valor:\n");
+    gets(str);
+
+    printf("Valor: %d\n", hex2dec(str));
+
+    return 0;
+}

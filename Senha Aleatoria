@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+char * gerasenha(int n)
+{
+    int op, i;
+    char * senha = (char*)malloc((n+1) * sizeof(char));
+
+    if (senha == NULL)
+    {
+        printf("Erro\n");
+        exit(0);
+    }
+    srand(time(NULL));
+
+    for(i=0;i<n;i++)
+    {
+        op = rand() % 3;
+
+        if (op == 0)
+        {
+            senha[i] = 'A' + rand() % 26;
+        }
+
+        else if (op == 1)
+        {
+            senha[i] = 'a' + rand() % 26;
+        }
+
+        else if (op == 2)
+        {
+            senha[i] = '0' + rand() % 10;
+        }
+    }
+
+    senha[i] = '\0';
+
+    return senha;
+
+}
+
+int main()
+{
+    int n;
+
+    printf("Tamanho da senha:\n");
+    scanf("%d", &n);
+
+    char * senha = gerasenha(n);
+
+    printf("%s", senha);
+
+    free(senha);
+}

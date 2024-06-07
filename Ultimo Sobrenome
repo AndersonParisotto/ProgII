@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define N 5
+
+char *ultimo_nome(char *nome_completo)
+{
+    int i, n, posicao;
+
+    n = 0;
+
+    for(i=0;nome_completo[i]!='\0';i++)
+    {
+        if (nome_completo[i] >= 'A' && nome_completo[i] <= 'Z')
+        {
+            n=0;
+
+            posicao = i;
+
+        }
+
+        n++;
+    }
+
+    char *ultimo = (char*) malloc ((n+1) * sizeof(char));
+
+    for(i=0;i<n;i++)
+    {
+        ultimo[i] = nome_completo[posicao];
+
+        posicao++;
+    }
+
+    ultimo[i] = '\0';
+
+    return ultimo;
+}
+
+
+int main()
+{
+    int i;
+    char nome_completo[50];
+
+    for(i=0;i<N;i++)
+    {
+        printf("Digite o nome completo\n");
+
+        gets(nome_completo);
+
+        char *ultimo_name = ultimo_nome(nome_completo);
+
+        printf("%s\n", ultimo_name);
+
+        free(ultimo_name);
+    }
+}
